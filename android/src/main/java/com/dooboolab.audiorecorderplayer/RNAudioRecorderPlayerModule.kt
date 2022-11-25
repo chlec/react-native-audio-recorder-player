@@ -322,6 +322,25 @@ class RNAudioRecorderPlayerModule(private val reactContext: ReactApplicationCont
     }
 
     @ReactMethod
+    fun setSpeed(speed: Float, promise: Promise) {
+        if (mediaPlayer == null) {
+            promise.reject("seekTo", "mediaPlayer is null on seek.")
+            return
+        }
+
+        mediaPlayer!!.setPlaybackParams(mediaPlayer.getPlaybackParams().setSpeed(speed))
+        promise.resolve("pause player")
+    }
+
+    private fun sendEvent(reactContext: ReactContext,
+                          eventName: String,
+                          params: WritableMap?) {
+        reactContext
+                .getJSModule<RCTDeviceEventEmitter>(RCTDeviceEventEmitter::class.java)
+                .emit(eventName, params)
+    }
+
+    @ReactMethod
     fun stopPlayer(promise: Promise) {
         if (mTimer != null) {
             mTimer!!.cancel()
