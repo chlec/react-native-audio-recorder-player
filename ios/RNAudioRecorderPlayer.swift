@@ -422,7 +422,7 @@ class RNAudioRecorderPlayer: RCTEventEmitter, AVAudioRecorderDelegate {
         resolve("Resumed!")
     }
 
-    @objc(seekToPlayer:resolve:rejecter:)
+    @objc(setSpeed:resolve:rejecter:)
     public func setSpeed(
         speed: Float,
         resolve: @escaping RCTPromiseResolveBlock,
