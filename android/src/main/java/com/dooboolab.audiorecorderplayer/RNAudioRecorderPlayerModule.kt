@@ -320,7 +320,7 @@ class RNAudioRecorderPlayerModule(private val reactContext: ReactApplicationCont
             return
         }
 
-        mediaPlayer!!.setPlaybackParams(mediaPlayer.getPlaybackParams().setSpeed(speed))
+        mediaPlayer.setPlaybackParams(mediaPlayer.getPlaybackParams().setSpeed(speed))
         promise.resolve("pause player")
     }
 
