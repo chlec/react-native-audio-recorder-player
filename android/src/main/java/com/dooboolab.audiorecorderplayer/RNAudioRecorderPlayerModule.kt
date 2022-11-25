@@ -313,14 +313,6 @@ class RNAudioRecorderPlayerModule(private val reactContext: ReactApplicationCont
         promise.resolve("pause player")
     }
 
-    private fun sendEvent(reactContext: ReactContext,
-                          eventName: String,
-                          params: WritableMap?) {
-        reactContext
-                .getJSModule<RCTDeviceEventEmitter>(RCTDeviceEventEmitter::class.java)
-                .emit(eventName, params)
-    }
-
     @ReactMethod
     fun setSpeed(speed: Float, promise: Promise) {
         if (mediaPlayer == null) {
