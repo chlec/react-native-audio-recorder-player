@@ -400,6 +400,15 @@ class AudioRecorderPlayer {
   };
 
   /**
+   * Seek to.
+   * @param {number} time position seek to in millisecond.
+   * @returns {Promise<string>}
+   */
+  setSpeed = async (time: number): Promise<string> => {
+    return RNAudioRecorderPlayer.setSpeed(time);
+  };
+
+  /**
    * Set volume.
    * @param {number} setVolume set volume.
    * @returns {Promise<string>}

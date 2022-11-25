@@ -422,6 +422,21 @@ class RNAudioRecorderPlayer: RCTEventEmitter, AVAudioRecorderDelegate {
         resolve("Resumed!")
     }
 
+    @objc(seekToPlayer:resolve:rejecter:)
+    public func setSpeed(
+        speed: Float,
+        resolve: @escaping RCTPromiseResolveBlock,
+        rejecter reject: @escaping RCTPromiseRejectBlock
+    ) -> Void {
+        if (audioPlayer == nil) {
+            return reject("RNAudioPlayerRecorder", "Player is null", nil)
+        }
+
+        audioPlayer?.currentItem?.audioTimePitchAlgorithm = .timeDomain
+        audioPlayer.rate = speed
+        resolve("Speed changed!")
+    }
+
     @objc(setVolume:resolve:rejecter:)
     public func setVolume(
         volume: Float,
