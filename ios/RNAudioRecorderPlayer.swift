@@ -362,6 +362,7 @@ class RNAudioRecorderPlayer: RCTEventEmitter, AVAudioRecorderDelegate {
         }
 
         addPeriodicTimeObserver()
+        audioPlayer?.currentItem?.audioTimePitchAlgorithm = .timeDomain
         audioPlayer.play()
         resolve(audioFileURL?.absoluteString)
     }
@@ -432,7 +433,6 @@ class RNAudioRecorderPlayer: RCTEventEmitter, AVAudioRecorderDelegate {
             return reject("RNAudioPlayerRecorder", "Player is null", nil)
         }
 
-        audioPlayer?.currentItem?.audioTimePitchAlgorithm = .timeDomain
         audioPlayer.rate = speed
         resolve("Speed changed!")
     }
